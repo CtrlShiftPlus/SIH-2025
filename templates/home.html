@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Ingres Chatbot</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'chatbot/css/chatbot.css' %}">
+</head>
+<body>
+    <iframe src="https://ingres.iith.ac.in/home" title="Ingres Website"></iframe>
+
+    <div id="chatbot-container">
+        <div id="chatbot-heading" onclick="toggleMinimize()">Bot6 Chatbot</div>
+
+        <button id="fullscreen-btn" onclick="toggleFullscreen()">↗</button>
+
+        <button id="minimize-btn" onclick="toggleMinimize()">-</button>
+
+        <div id="chatbox">
+            <div id="chatlog"></div>
+        </div>
+
+        <div id="chat-input-container">
+            <input type="text" id="user-input" placeholder="Type a message..." />
+            <button id="send-btn">Send</button>
+        </div>
+    </div>
+
+    <script src="{% static 'chatbot/js/chatbot.js' %}"></script>
+
+    <script>
+
+    function toggleFullscreen() {
+        var chatbot = document.getElementById('chatbot-container');
+        var fullscreenBtn = document.getElementById('fullscreen-btn');
+
+        if (chatbot.classList.contains('fullscreen')) {
+            chatbot.classList.remove('fullscreen');
+            fullscreenBtn.innerHTML = '↗';
+        } else {
+            chatbot.classList.add('fullscreen');
+            fullscreenBtn.innerHTML = '↖';
+        }
+    }
+
+    function toggleMinimize() {
+        var chatbot = document.getElementById('chatbot-container');
+        var minimizeBtn = document.getElementById('minimize-btn');
+        chatbot.classList.toggle('minimized');
+        if (chatbot.classList.contains('minimized')) {
+            minimizeBtn.innerHTML = '+';
+        } else {
+            minimizeBtn.innerHTML = '-';
+        }
+    }
+
+</script>
+
+
+</body>
+</html>
