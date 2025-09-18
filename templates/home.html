@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Ingres Chatbot</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'chatbot/css/chatbot.css' %}">
+</head>
+<body>
+    <iframe src="https://ingres.iith.ac.in/home" title="Ingres Website"></iframe>
+
+    <div id="chatbot-container">
+        <div id="chatbot-heading" onclick="toggleMinimize()">Bot6 Chatbot</div>
+
+        <button id="fullscreen-btn" onclick="toggleFullscreen()">↗</button>
+
+        <button id="minimize-btn" onclick="toggleMinimize()">-</button>
+
+        <div id="chatbox">
+            <div id="chatlog"></div>
+        </div>
+
+        <div id="chat-input-container">
+            <input type="text" id="user-input" placeholder="Type a message..." />
+            <button id="send-btn">Send</button>
+        </div>
+        <!-- Language dropdown -->
+        <label for="language-select" class="lang-label">Choose Language:</label>
+        <select id="language-select" class="lang-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="kn">Kannada</option>
+            <option value="te">Telugu</option>
+            <option value="mr">Marathi</option>
+            <option value="ta">Tamil</option>
+            <option value="gu">Gujarati</option>
+        </select>
+
+        <style>
+        /* Label styling */
+        .lang-label {
+            font-weight: bold;
+            margin-right: 10px;
+            color: #6a0dad; /* deep purple */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Dropdown styling */
+        .lang-select {
+            padding: 8px 12px;
+            border: 2px solid #6a0dad; /* purple border */
+            border-radius: 8px;
+            background-color: #f3e5f5; /* light purple background */
+            color: #4b0082; /* dark purple text */
+            font-size: 16px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            outline: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        /* Hover effect */
+        .lang-select:hover {
+            background-color: #e1bee7; /* slightly darker purple */
+            border-color: #4b0082; /* darker purple border */
+        }
+
+        /* Focus effect */
+        .lang-select:focus {
+            box-shadow: 0 0 5px #6a0dad;
+            border-color: #6a0dad;
+        }
+
+        /* Optional: smooth arrow */
+        .lang-select option {
+            background-color: #f3e5f5;
+            color: #4b0082;
+        }
+        </style>
+
+    </div>
+
+    <script src="{% static 'chatbot/js/chatbot.js' %}"></script>
+
+    <script>
+
+    function toggleFullscreen() {
+        var chatbot = document.getElementById('chatbot-container');
+        var fullscreenBtn = document.getElementById('fullscreen-btn');
+
+        if (chatbot.classList.contains('fullscreen')) {
+            chatbot.classList.remove('fullscreen');
+            fullscreenBtn.innerHTML = '↗';
+        } else {
+            chatbot.classList.add('fullscreen');
+            fullscreenBtn.innerHTML = '↖';
+        }
+    }
+
+    function toggleMinimize() {
+        var chatbot = document.getElementById('chatbot-container');
+        var minimizeBtn = document.getElementById('minimize-btn');
+        chatbot.classList.toggle('minimized');
+        if (chatbot.classList.contains('minimized')) {
+            minimizeBtn.innerHTML = '+';
+        } else {
+            minimizeBtn.innerHTML = '-';
+        }
+    }
+
+</script>
+
+
+</body>
+</html>
